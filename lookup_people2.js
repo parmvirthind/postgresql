@@ -1,5 +1,4 @@
 const settings = require('./settings');
-
 const knex = require('knex')({
   client: 'postgresql',
   connection: {
@@ -10,8 +9,10 @@ const knex = require('knex')({
   }
 });
 
+const arg = process.argv[2];
 
-knex('famous_people').where('first_name', 'Abraham')
+
+knex('famous_people').where('first_name', arg)
 .asCallback(function(err,rows) {
   if (err) return console.log(err);
   console.log(rows);
